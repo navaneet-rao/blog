@@ -16,7 +16,10 @@ router.post("/api/login", async (req, res) => {
 
   try {
     // Find the user
-    const user = await prisma.user.findUnique({ where: { email } });
+    const user = await prisma.user.findUnique({
+      where: { email },
+      select: { id: true, name: true, email: true, password: true }, // Select necessary fields
+    });
 
     if (!user) {
       return res.status(401).json({ error: "Invalid email or password" });
@@ -34,7 +37,11 @@ router.post("/api/login", async (req, res) => {
       expiresIn: "1h",
     });
 
-    res.status(200).json({ message: "Login successful", token });
+    res.status(200).json({
+      message: "Login successful",
+      user: { id: user.id, name: user.name, email: user.email }, // Include user details
+      token,
+    });
   } catch (error) {
     res.status(500).json({ error: "Internal Server Error" });
     console.log(error);

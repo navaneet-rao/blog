@@ -23,20 +23,19 @@ const Login = () => {
         body: JSON.stringify({ email, password }),
       });
 
-      if (!response.ok) {
-        const data = await response.json();
+      const data = await response.json();
+
+      if (response.ok) {
+        login(data.user, data.token); // Call the login method
+      } else {
         throw new Error(data.error || "Something went wrong");
       }
 
-      const data = await response.json();
       console.log(data.message);
-
-      const userData = data.user; // Adjust based on your API response
-      const token = data.token;
-
-      login(userData, token);
-
-      navigate("/dashboard"); // Adjust this route as needed
+      console.log("User:", data.user);
+      console.log("Token:", data.token);
+      
+      navigate("/dashboard"); 
     } catch (err) {
       const error = err as Error;
       console.error("Error:", error.message);

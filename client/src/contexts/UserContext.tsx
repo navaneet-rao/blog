@@ -29,25 +29,23 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Check if token and user exist in localStorage
     const savedToken = localStorage.getItem("token");
     const savedUser = localStorage.getItem("user");
 
-    // Only parse if the values are non-null and valid JSON
     if (savedToken) {
       setToken(savedToken);
     }
 
-    if (savedUser) {
+    if (savedUser && savedUser !== "null") {
       try {
         const parsedUser = JSON.parse(savedUser);
         setUser(parsedUser);
       } catch (error) {
         console.error("Failed to parse user from localStorage", error);
-        // Handle the error here (e.g., remove invalid data)
         localStorage.removeItem("user");
       }
     }
+    console.log("Saved User:", savedUser);
   }, []);
 
   const login = (userData: User, userToken: string) => {
