@@ -1,4 +1,3 @@
-// server.js
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
@@ -14,11 +13,16 @@ app.use(bodyParser.json());
 // API Routes
 const signupRoute = require("./src/api/sigup");
 const loginRoute = require("./src/api/login");
+const categoriesRoute = require("./src/api/categories"); 
+const postRoute = require("./src/api/post");
 
 app.use(signupRoute);
 app.use(loginRoute);
+app.use(categoriesRoute); 
+app.use(postRoute);
 
 const PORT = process.env.PORT || 5000;
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
