@@ -76,13 +76,13 @@ const Navbar = () => {
 
         {/* Navigation Links for desktop */}
         <div className="hidden md:flex space-x-4">
-          <a href="/Home" className="      text-text-1">
+          <a href="/dashboard" className=" text-text-1">
             Home
           </a>
-          <a href="/login" className="      text-text-1">
+          <a href="/login" className=" text-text-1">
             Login
           </a>
-          <a href="/signup" className="      text-text-1">
+          <a href="/signup" className=" text-text-1">
             Signup
           </a>
           {/* Toggle Switch */}
@@ -104,7 +104,7 @@ const Navbar = () => {
       {/* Navigation Links for mobile (expand below logo) */}
       {menuOpen && (
         <div className="md:hidden mt-4 space-y-2">
-          <a href="/Home" className="block       text-text-1">
+          <a href="/dashboard" className="block       text-text-1">
             Home
           </a>
           <a href="/login" className="block       text-text-1">
