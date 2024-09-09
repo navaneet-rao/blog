@@ -34,8 +34,8 @@ const Login = () => {
       console.log(data.message);
       console.log("User:", data.user);
       console.log("Token:", data.token);
-      
-      navigate("/dashboard"); 
+
+      navigate("/dashboard");
     } catch (err) {
       const error = err as Error;
       console.error("Error:", error.message);
@@ -103,6 +103,18 @@ const Login = () => {
               >
                 Login
               </button>
+            </div>
+
+            <div>
+              <p className="text-center text-sm text-text-1">
+                Don't have an account?{" "}
+                <a
+                  href="/signup"
+                  className="text-primary hover:underline focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50"
+                >
+                  Register
+                </a>
+              </p>
             </div>
           </form>
         </div>

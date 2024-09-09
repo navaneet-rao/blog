@@ -9,7 +9,6 @@ interface PrivateRouteProps {
 
 const PrivateRoute = ({ children }: PrivateRouteProps) => {
   const { token } = useContext(UserContext);
-  console.log("Token in PrivateRoute:", token);
   return token ? children : <Navigate to="/login" />;
 };
 

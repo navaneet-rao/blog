@@ -10,6 +10,7 @@ import Login from "./pages/LogIn/logIn";
 import Landing from "./pages/Landing/landing";
 import { UserProvider } from "./contexts/UserContext";
 import PrivateRoute from "./components/PrivateRoute";
+import NewFeed from "./pages/Blog/NewFeed/NewFeed";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/newfeed" element={<NewFeed />} />
         </Routes>
       </UserProvider>
     </Router>

@@ -4,6 +4,36 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [theme, setTheme] = useState<string>("light");
 
+  const NavLinks = () => {
+    return (
+      <div className="flex flex-col md:flex-row md:space-x-4">
+        <a href="/newfeed" className="block text-text-1">
+          New Feed
+        </a>
+        <a href="/dashboard" className="block text-text-1">
+          Dashboard
+        </a>
+      </div>
+    );
+  };
+
+  const ToggleSwitch = () => {
+    return (
+      <label className="inline-flex cursor-pointer items-center">
+        <input
+          type="checkbox"
+          className="peer sr-only"
+          checked={theme === "dark"}
+          onChange={handleThemeChange}
+        />
+        <div className="peer relative h-6 w-11 rounded-full bg-gray-200 after:absolute after:start-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-blue-600 peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rtl:peer-checked:after:-translate-x-full dark:border-gray-600 dark:bg-gray-700 dark:peer-focus:ring-blue-800"></div>
+        <span className="ml-3 text-lg font-medium text-text-1">
+          {theme === "dark" ? "Dark" : "Light"} Theme
+        </span>
+      </label>
+    );
+  };
+
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
@@ -24,17 +54,17 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-background-nav p-4 my-2 container self-center absolute rounded-lg">
-      <div className="mx-auto flex justify-between items-center rounded-lg">
+    <nav className="fixed z-10 w-full bg-background-nav p-6">
+      <div className="mx-auto flex items-center justify-between">
         {/* Logo */}
-        <div className=" text-xl font-bold">
-          <a href="/Home" className="text-text-1">
+        <div className="text-2xl font-bold">
+          <a href="/home" className="text-text-1">
             Logo
           </a>
         </div>
 
         {/* Hamburger Menu */}
-        <div className="md:hidden ">
+        <div className="md:hidden">
           <button
             onClick={toggleMenu}
             className="text-text-1 focus:outline-none"
@@ -75,58 +105,17 @@ const Navbar = () => {
         </div>
 
         {/* Navigation Links for desktop */}
-        <div className="hidden md:flex space-x-4">
-          <a href="/dashboard" className=" text-text-1">
-            Home
-          </a>
-          <a href="/login" className=" text-text-1">
-            Login
-          </a>
-          <a href="/signup" className=" text-text-1">
-            Signup
-          </a>
-          {/* Toggle Switch */}
-          <label className="inline-flex items-center cursor-pointer">
-            <input
-              type="checkbox"
-              className="sr-only peer"
-              checked={theme === "dark"}
-              onChange={handleThemeChange}
-            />
-            <div className="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:bg-blue-600 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600"></div>
-            <span className="ms-3 text-sm font-medium text-text-1">
-              {theme === "dark" ? "Dark" : "Light"} Theme
-            </span>
-          </label>
+        <div className="hidden items-center space-x-6 md:flex">
+          <NavLinks />
+          <ToggleSwitch />
         </div>
       </div>
 
-      {/* Navigation Links for mobile (expand below logo) */}
+      {/* Mobile Menu */}
       {menuOpen && (
-        <div className="md:hidden mt-4 space-y-2">
-          <a href="/dashboard" className="block       text-text-1">
-            Home
-          </a>
-          <a href="/login" className="block       text-text-1">
-            Login
-          </a>
-          <a href="/signup" className="block       text-text-1">
-            Signup
-          </a>
-
-          {/* Toggle Switch */}
-          <label className="inline-flex items-center cursor-pointer">
-            <input
-              type="checkbox"
-              className="sr-only peer"
-              checked={theme === "dark"}
-              onChange={handleThemeChange}
-            />
-            <div className="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:bg-blue-600 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600"></div>
-            <span className="ms-3 text-sm font-medium text-text-1">
-              {theme === "dark" ? "Dark" : "Light"} Theme
-            </span>
-          </label>
+        <div className="mt-4 h-screen space-y-4 md:hidden">
+          <NavLinks />
+          <ToggleSwitch />
         </div>
       )}
     </nav>

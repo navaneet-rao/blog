@@ -38,7 +38,6 @@ const SignUp = () => {
       const data = await response.json();
       console.log(data.message);
       navigate("/login");
-
     } catch (err) {
       // Type the error as Error
       const error = err as Error;
@@ -49,9 +48,9 @@ const SignUp = () => {
 
   return (
     <Layout>
-      <main className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-background-1 to-background-2 p-4">
-        <div className="bg-background-card shadow-lg rounded-lg p-8 max-w-md w-full sm:max-w-sm ">
-          <h1 className="text-3xl font-semibold text-center mb-6 text-text-1 ">
+      <main className="flex h-screen flex-col items-center justify-center bg-gradient-to-b from-background-1 to-background-2 p-4">
+        <div className="w-full max-w-md scale-95 rounded-lg bg-background-card p-8 shadow-lg sm:max-w-sm">
+          <h1 className="mb-6 text-center text-3xl font-semibold text-text-1">
             Sign Up
           </h1>
           <form onSubmit={handleSubmit} className="space-y-6">
@@ -59,7 +58,7 @@ const SignUp = () => {
             <div>
               <label
                 htmlFor="name"
-                className="block text-sm font-medium text-text-1    "
+                className="block text-sm font-medium text-text-1"
               >
                 Name
               </label>
@@ -68,7 +67,7 @@ const SignUp = () => {
                 id="name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:ring-primary focus:border-primary sm:text-sm"
+                className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-primary focus:ring-primary sm:text-sm"
                 placeholder="Your Name"
                 required
               />
@@ -87,7 +86,7 @@ const SignUp = () => {
                 id="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:ring-primary focus:border-primary sm:text-sm"
+                className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-primary focus:ring-primary sm:text-sm"
                 placeholder="name@example.com"
                 required
               />
@@ -106,7 +105,7 @@ const SignUp = () => {
                 id="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:ring-primary focus:border-primary sm:text-sm"
+                className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-primary focus:ring-primary sm:text-sm"
                 required
               />
             </div>
@@ -115,7 +114,7 @@ const SignUp = () => {
             <div>
               <label
                 htmlFor="confirm-password"
-                className="block text-sm font-medium text-text-1  "
+                className="block text-sm font-medium text-text-1"
               >
                 Confirm Password
               </label>
@@ -124,14 +123,14 @@ const SignUp = () => {
                 id="confirm-password"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:ring-primary focus:border-primary sm:text-sm"
+                className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-primary focus:ring-primary sm:text-sm"
                 required
               />
             </div>
 
             {/* Error Message */}
             {error && (
-              <p className="text-red-500 text-sm text-center font-medium">
+              <p className="text-center text-sm font-medium text-red-500">
                 {error}
               </p>
             )}
@@ -140,10 +139,20 @@ const SignUp = () => {
             <div>
               <button
                 type="submit"
-                className="w-full bg-primary text-text-inv-1 font-medium py-2 px-4 rounded-lg shadow-md hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition"
+                className="w-full rounded-lg bg-primary px-4 py-2 font-medium text-text-inv-1 shadow-md transition hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50"
               >
                 Sign Up
               </button>
+            </div>
+
+            <div className="text-center text-sm text-text-1">
+              Already have an account?{" "}
+              <a
+                href="/login"
+                className="text-primary hover:underline focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50"
+              >
+                Log In
+              </a>
             </div>
           </form>
         </div>
