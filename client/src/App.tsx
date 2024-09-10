@@ -14,7 +14,7 @@ const PrivateRoute = lazy(() => import("./components/PrivateRoute"));
 
 function App() {
   return (
-    <Router>
+    <Router basename="/blog">
       <UserProvider>
         <Suspense fallback={<Loading />}>
           <Routes>

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -7,12 +8,12 @@ const Navbar = () => {
   const NavLinks = () => {
     return (
       <div className="flex flex-col md:flex-row md:space-x-4">
-        <a href="/newfeed" className="block text-text-1">
+        <Link to="/newfeed" className="block text-text-1">
           New Feed
-        </a>
-        <a href="/dashboard" className="block text-text-1">
+        </Link>
+        <Link to="/dashboard" className="block text-text-1">
           Dashboard
-        </a>
+        </Link>
       </div>
     );
   };
@@ -58,9 +59,9 @@ const Navbar = () => {
       <div className="mx-auto flex items-center justify-between">
         {/* Logo */}
         <div className="text-2xl font-bold">
-          <a href="/home" className="text-text-1">
+          <Link to="/" className="text-text-1">
             Logo
-          </a>
+          </Link>
         </div>
 
         {/* Hamburger Menu */}

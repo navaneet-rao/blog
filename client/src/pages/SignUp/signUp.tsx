@@ -1,6 +1,6 @@
 import Layout from "../../layouts/layout";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const SignUp = () => {
   const [name, setName] = useState<string>("");
@@ -147,12 +147,12 @@ const SignUp = () => {
 
             <div className="text-center text-sm text-text-1">
               Already have an account?{" "}
-              <a
-                href="/login"
+              <Link
+                to="/login"
                 className="text-primary hover:underline focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50"
               >
                 Log In
-              </a>
+              </Link>
             </div>
           </form>
         </div>

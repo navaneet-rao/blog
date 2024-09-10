@@ -1,6 +1,6 @@
 import Layout from "../../layouts/layout";
 import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../../contexts/UserContext";
 
 const Login = () => {
@@ -108,12 +108,12 @@ const Login = () => {
             <div>
               <p className="text-center text-sm text-text-1">
                 Don't have an account?{" "}
-                <a
-                  href="/signup"
+                <Link
+                  to="/signup"
                   className="text-primary hover:underline focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50"
                 >
                   Register
-                </a>
+                </Link>
               </p>
             </div>
           </form>

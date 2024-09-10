@@ -3,6 +3,7 @@ import  { useEffect, useState } from "react";
 import Layout from "../../../layouts/layout";
 import DOMPurify from "dompurify"; // For sanitizing HTML content
 import Loading from "../../Loading/Loading";
+import { Link } from "react-router-dom";
 
 interface Post {
   id: string;
@@ -46,20 +47,14 @@ const NewFeed = () => {
     fetchPosts();
   }, []);
 
-  const openPostInNewTab = (postId: string) => {
-    const newTab = window.open(`/post/${postId}`, "_blank");
-    if (newTab) {
-      newTab.focus();
-    }
-  };
 
   if (loading) {
     return <Loading />;
   }
 
-  if (error) {
-    return <p>{error}</p>;
-  }
+  // if (error) {
+  //   return <p>{error}</p>;
+  // }
 
   return (
     <Layout>
@@ -106,12 +101,13 @@ const NewFeed = () => {
                         {new Date(post.createdAt).toLocaleDateString()}
                       </span>
                     </div>
-                    <button
-                      onClick={() => openPostInNewTab(post.id)}
+                    <Link
+                      to={`/post/${post.id}`}
+                      target="_blank"
                       className="text-indigo-600 hover:text-indigo-800 hover:underline"
                     >
                       Read More
-                    </button>
+                    </Link>
                   </div>
                 </div>
               ))}
