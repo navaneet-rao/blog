@@ -1,4 +1,3 @@
-// src/contexts/UserContext.tsx
 import React, { createContext, useState, useEffect, ReactNode } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -6,7 +5,7 @@ interface User {
   id: string;
   name: string;
   email: string;
-  // Add other user properties as needed
+  admin?: boolean; 
 }
 
 interface UserContextType {

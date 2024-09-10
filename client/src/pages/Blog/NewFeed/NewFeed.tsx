@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import  { useEffect, useState } from "react";
+
 import Layout from "../../../layouts/layout";
 import DOMPurify from "dompurify"; // For sanitizing HTML content
 import Loading from "../../Loading/Loading";
@@ -21,7 +21,6 @@ const NewFeed = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -90,7 +89,7 @@ const NewFeed = () => {
 
                   {/* Render HTML content safely */}
                   <div
-                    className="mb-4 line-clamp-2 text-gray-700"
+                    className="mb-4 line-clamp-3 text-gray-700"
                     dangerouslySetInnerHTML={{
                       __html: DOMPurify.sanitize(post.content),
                     }}

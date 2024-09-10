@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import Layout from "../../../layouts/layout";
 import DOMPurify from "dompurify";
 import Loading from "../../Loading/Loading";
+import CommentsSection from "../../../components/Comments/CommentsSection";
 
 interface Post {
   title: string;
@@ -56,24 +57,29 @@ const PostView = () => {
     <Layout>
       <div className="h-full bg-gradient-to-b from-background-1 to-background-2 pt-28">
         <div className="min-h-screen">
-          <main className="container mx-auto  rounded bg-white px-16 py-10">
-            {post ? (
-              <div className="prose lg:prose-xl">
-                <h1 className="text-3xl font-bold">{post.title}</h1>
-                <p className="text-sm text-gray-500">
-                  By {post.author.name} | {post.category} |{" "}
-                  {new Date(post.createdAt).toLocaleDateString()}
-                </p>
-                <div
-                  className="mt-4"
-                  dangerouslySetInnerHTML={{
-                    __html: DOMPurify.sanitize(post.content),
-                  }}
-                />
-              </div>
-            ) : (
-              <p>No post found</p>
-            )}
+          <main className="container mx-auto rounded bg-white px-16 py-10">
+            <div>
+              {post ? (
+                <div className="prose lg:prose-xl">
+                  <h1 className="text-3xl font-bold">{post.title}</h1>
+                  <p className="text-sm text-gray-500">
+                    By {post.author.name} | {post.category} |{" "}
+                    {new Date(post.createdAt).toLocaleDateString()}
+                  </p>
+                  <div
+                    className="mt-4"
+                    dangerouslySetInnerHTML={{
+                      __html: DOMPurify.sanitize(post.content),
+                    }}
+                  />
+                </div>
+              ) : (
+                <p>No post found</p>
+              )}
+            </div>
+            <div className=" border-dotted border-t border-t-black mt-10">
+              <CommentsSection postId={postId!} />
+            </div>
           </main>
         </div>
       </div>

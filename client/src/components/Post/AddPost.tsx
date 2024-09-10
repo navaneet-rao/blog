@@ -84,7 +84,7 @@ const AddPost: React.FC = () => {
   };
 
   return (
-    <div className="mx-auto my-8  max-w-6xl rounded bg-background-card px-8 py-6 shadow-md">
+    <div className="mx-auto max-w-6xl rounded bg-background-card px-8 py-6 shadow-md">
       <h1 className="mb-6 text-3xl font-semibold text-text-1">
         Create New Post
       </h1>
