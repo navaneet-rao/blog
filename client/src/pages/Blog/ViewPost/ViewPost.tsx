@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Layout from "../../../layouts/layout";
 import DOMPurify from "dompurify";
 import Loading from "../../Loading/Loading";
 import CommentsSection from "../../../components/Comments/CommentsSection";
+
+import "./ViewPost.css";
 
 interface Post {
   title: string;
@@ -55,19 +57,21 @@ const PostView = () => {
 
   return (
     <Layout>
-      <div className="h-full bg-gradient-to-b from-background-1 to-background-2 pt-28">
+      <div className="h-full bg-background-2 pt-28">
         <div className="min-h-screen">
-          <main className="container mx-auto rounded bg-white px-16 py-10">
+          <main className="container mx-auto rounded px-5">
             <div>
               {post ? (
                 <div className="prose lg:prose-xl">
-                  <h1 className="text-3xl font-bold">{post.title}</h1>
+                  <h1 className="text-3xl font-bold text-text-1">
+                    {post.title}
+                  </h1>
                   <p className="text-sm text-gray-500">
                     By {post.author.name} | {post.category} |{" "}
                     {new Date(post.createdAt).toLocaleDateString()}
                   </p>
                   <div
-                    className="mt-4"
+                    className="ViewPost-contant-section mt-4"
                     dangerouslySetInnerHTML={{
                       __html: DOMPurify.sanitize(post.content),
                     }}
@@ -77,7 +81,7 @@ const PostView = () => {
                 <p>No post found</p>
               )}
             </div>
-            <div className=" border-dotted border-t border-t-black mt-10">
+            <div className="mt-10 border-t border-text-1">
               <CommentsSection postId={postId!} />
             </div>
           </main>

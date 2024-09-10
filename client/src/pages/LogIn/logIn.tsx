@@ -45,7 +45,7 @@ const Login = () => {
 
   return (
     <Layout>
-      <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-background-1 to-background-2 p-4">
+      <main className="flex h-screen flex-col items-center justify-center bg-background-2 p-4">
         <div className="w-full max-w-md rounded-lg bg-background-card p-8 shadow-lg sm:max-w-sm">
           <h1 className="mb-6 text-center text-3xl font-semibold text-text-1">
             Login

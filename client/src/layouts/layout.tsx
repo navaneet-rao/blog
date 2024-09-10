@@ -1,3 +1,4 @@
+import Footer from "../components/Footer/Footer";
 import Navbar from "../components/Navbar/Navbar"; // Adjust the path as needed
 import { ReactNode, useEffect } from "react";
 
@@ -31,7 +32,7 @@ const Layout = ({ children }: LayoutProps) => {
     <div className="flex flex-col min-h-screen ">
       <Navbar />
       <div className="flex-1 mt-10 md:mt-0">{children}</div>
-      <footer/>
+      <Footer/>
     </div>
   );
 };

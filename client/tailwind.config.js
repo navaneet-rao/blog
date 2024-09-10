@@ -4,6 +4,7 @@ export default {
   theme: {
     extend: {
       colors: {
+        
         background: {
           1: "rgba(var(--color-bg1))",
           2: "rgba(var(--color-bg2))",

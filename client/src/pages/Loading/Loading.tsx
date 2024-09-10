@@ -2,9 +2,9 @@ import React from "react";
 
 const Loading: React.FC = () => {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-black">
+    <div className="min-h-screen bg-background-2 flex flex-col items-center justify-center">
       <div className="relative">
-        <div className="w-16 h-16 border-t-4 border-blue-500 border-solid rounded-full animate-spin"></div>
+        <div className="h-16 w-16 animate-spin rounded-full border-t-4 border-solid border-blue-500"></div>
         <p className="mt-4 text-gray-500">Loading...</p>
       </div>
     </div>

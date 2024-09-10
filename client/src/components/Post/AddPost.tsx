@@ -1,7 +1,16 @@
-import React, { useContext, useEffect, useState, useRef } from "react";
+import React, {
+  useContext,
+  useEffect,
+  useState,
+  useRef,
+  Suspense,
+  lazy,
+} from "react";
 import { UserContext } from "../../contexts/UserContext";
-import JoditEditor from "jodit-react";
-import Modal from "../Modal/Modal";
+
+// Lazy load components
+const JoditEditorWrapper = lazy(() => import("./JoditEditorWrapper"));
+const ModalWrapper = lazy(() => import("./ModalWrapper"));
 
 interface Category {
   id: string;
@@ -67,7 +76,7 @@ const AddPost: React.FC = () => {
       setIsSuccess(true);
       setIsModalOpen(true);
 
-      resetForm(); 
+      resetForm();
     } catch (error) {
       console.error("Error adding post:", error);
 
@@ -84,7 +93,7 @@ const AddPost: React.FC = () => {
   };
 
   return (
-    <div className="mx-auto max-w-6xl rounded bg-background-card px-8 py-6 shadow-md">
+    <div className="container mx-auto rounded  px-8 py-6 ">
       <h1 className="mb-6 text-3xl font-semibold text-text-1">
         Create New Post
       </h1>
@@ -133,18 +142,21 @@ const AddPost: React.FC = () => {
         </div>
 
         {/* Jodit Editor */}
-        <div>
+        <div className="">
           <label
             htmlFor="content"
             className="block text-lg font-medium text-text-1"
           >
             Content Editor
           </label>
-          <JoditEditor
-            ref={editor}
-            value={content}
-            onChange={(newContent) => setContent(newContent)}
-          />
+
+          <Suspense fallback={<div>Loading Editor...</div>}>
+            <JoditEditorWrapper
+              ref={editor}
+              value={content}
+              onChange={(newContent) => setContent(newContent)}
+            />
+          </Suspense>
         </div>
 
         {/* Action Buttons */}
@@ -167,12 +179,14 @@ const AddPost: React.FC = () => {
       </form>
 
       {/* Modal Component */}
-      <Modal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)} 
-        message={modalMessage} 
-        isSuccess={isSuccess} 
-      />
+      <Suspense fallback={<div>Loading Modal...</div>}>
+        <ModalWrapper
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          message={modalMessage}
+          isSuccess={isSuccess}
+        />
+      </Suspense>
     </div>
   );
 };

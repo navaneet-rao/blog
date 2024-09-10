@@ -1,10 +1,10 @@
-import React from 'react'
+
 import Layout from '../../layouts/layout';
 
 function landing() {
     return (
       <Layout>
-        <div>Landing</div>
+        <div className="mt-28 bg-background-2">Landing</div>
       </Layout>
     );
 }

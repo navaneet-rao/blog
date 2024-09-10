@@ -1,8 +1,9 @@
-import { useContext, useState, useEffect, lazy, Suspense } from "react";
+import { useContext, useState, useEffect, Suspense } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import Layout from "../../layouts/layout";
 import DOMPurify from "dompurify";
 import Loading from "../../pages/Loading/Loading";
+import { Link } from "react-router-dom";
 
 // Define interfaces for the data
 interface Post {
@@ -28,14 +29,13 @@ interface Comment {
 }
 
 // Lazy load AddPost component
-const AddPost = lazy(() => import("../../components/Post/AddPost"));
 
 const Dashboard = () => {
   const { user, logout } = useContext(UserContext);
   const [userPosts, setUserPosts] = useState<Post[]>([]);
   const [userComments, setUserComments] = useState<Comment[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>("");
 
   useEffect(() => {
     const fetchUserDetails = async () => {
@@ -61,7 +61,9 @@ const Dashboard = () => {
           const commentsData = await commentsResponse.json();
           setUserComments(commentsData.comments);
           console.log(commentsData);
-        } catch (error) {
+        } catch (err) {
+          const error = err as Error;
+          console.error("Error:", error.message);
           setError(error.message);
         } finally {
           setLoading(false);
@@ -90,7 +92,9 @@ const Dashboard = () => {
       setUserPosts((prevPosts) =>
         prevPosts.filter((post) => post.id !== postId),
       );
-    } catch (error) {
+    } catch (err) {
+      const error = err as Error;
+      console.error("Error:", error.message);
       setError(error.message);
     }
   };
@@ -99,29 +103,37 @@ const Dashboard = () => {
     <>
       {loading && <Loading />}
       <Layout>
-        <div className="h-full bg-gradient-to-b from-background-1 to-background-2 pt-28">
+        <div className="h-full bg-background-2 pb-28 pt-28">
           <div className="container mx-auto min-h-screen">
-            <h1 className="text-5xl text-text-1">Dashboard</h1>
-
             {error && <p className="text-red-500">Error: {error}</p>}
             {user && !loading ? (
               <>
-                <h2 className="text-2xl text-text-1">Welcome, {user.name}</h2>
-                <button
-                  onClick={logout}
-                  className="mt-4 rounded bg-blue-500 px-4 py-2 font-bold text-text-inv-1 hover:bg-blue-700"
-                >
-                  Logout
-                </button>
-                {user.admin && (
+                <div className="space-x-4">
+                  <h1 className="text-5xl mx-3 text-text-1">Dashboard</h1>
+                  <h2 className="text-2xl text-text-1">Welcome, {user.name}</h2>
                   <button
-                    onClick={handleOpenStudio}
-                    className="mx-2 mt-4 rounded bg-green-500 px-4 py-2 font-bold text-text-inv-1 hover:bg-green-700"
+                    onClick={logout}
+                    className="mt-4 rounded bg-blue-500 px-4 py-2 font-bold text-text-inv-1 hover:bg-blue-700"
                   >
-                    Open Prisma Studio
+                    Logout
                   </button>
-                )}
-                <div className="mt-8 rounded bg-background-1 p-6 text-text-1">
+
+                  <Suspense fallback={<Loading />}>
+                    <button className="mt-4 rounded bg-orange-500 px-4 py-2 font-bold text-text-inv-1 hover:bg-orange-700">
+                      <Link to="/add-post">Create a new post</Link>
+                    </button>
+                  </Suspense>
+
+                  {user.admin && (
+                    <button
+                      onClick={handleOpenStudio}
+                      className="mt-4 rounded bg-green-500 px-4 py-2 font-bold text-text-inv-1 hover:bg-green-700"
+                    >
+                      Open Prisma Studio
+                    </button>
+                  )}
+                </div>
+                <div className="mt-8 rounded bg-background-card p-6 text-text-1">
                   <h3 className="text-xl font-semibold">User Information</h3>
                   <p className="mt-2">Email: {user.email}</p>
 
@@ -137,17 +149,17 @@ const Dashboard = () => {
                     </div>
                   </div>
 
-                  <h3 className="mb-6 mt-8 text-xl font-semibold">
+                  <h3 className="mb-6 mt-8 text-xl  font-semibold">
                     Your Posts
                   </h3>
-                  <div className="grid grid-cols-1 gap-6 text-text-inv-1 md:grid-cols-2 lg:grid-cols-3">
+                  <div className="grid grid-cols-1 gap-6 text-text-1  md:grid-cols-2 lg:grid-cols-3">
                     {userPosts.length > 0 ? (
                       userPosts.map((post) => (
                         <div
                           key={post.id}
                           className="rounded bg-white p-6 shadow-md"
                         >
-                          <h4 className="text-2xl font-bold">{post.title}</h4>
+                          <h4 className="text-2xl text-black font-bold">{post.title}</h4>
                           <p className="text-sm text-gray-500">
                             {post.category} |{" "}
                             {new Date(post.createdAt).toLocaleDateString()}
@@ -194,11 +206,6 @@ const Dashboard = () => {
                       <p>No comments available.</p>
                     )}
                   </div>
-                </div>
-                <div className="mt-6">
-                  <Suspense fallback={<Loading />}>
-                    <AddPost />
-                  </Suspense>
                 </div>
               </>
             ) : (

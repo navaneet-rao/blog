@@ -120,7 +120,7 @@ const CommentsSection: React.FC<CommentsSectionProps> = ({ postId }) => {
   };
 
   return (
-    <div className="mt-8">
+    <div className="mt-8 text-text-1">
       <h3 className="text-2xl font-semibold">Comments Section</h3>
       <form onSubmit={handleCommentSubmit} className="mt-4">
         <textarea
@@ -130,7 +130,11 @@ const CommentsSection: React.FC<CommentsSectionProps> = ({ postId }) => {
           placeholder="Add your comment here..."
           rows={5}
         />
-        {error && <p className="mt-2 text-red-500">{error}</p>}
+        {error && (
+          <p className="mt-2 text-red-500">
+            Please login or check your internet connection: {error}
+          </p>
+        )}
         {success && <p className="mt-2 text-green-500">{success}</p>}
         <button
           type="submit"
@@ -146,7 +150,7 @@ const CommentsSection: React.FC<CommentsSectionProps> = ({ postId }) => {
           comments.map((comment) => (
             <div key={comment.id} className="mt-4 border-t pt-4">
               <p className="text-lg">{comment.content}</p>
-              <p className="text-sm text-gray-500">
+              <p className="text-sm  text-gray-500">
                 By {comment.author?.name || "Unknown"} |{" "}
                 {new Date(comment.createdAt).toLocaleDateString()}
               </p>

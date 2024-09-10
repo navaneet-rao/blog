@@ -1,0 +1,9 @@
+.ViewPost-contant-section * {
+  background: transparent !important;
+  color: rgba(var(--color-text-1)) !important;
+  /* font-size: large !important; */
+}
+
+.ViewPost-contant-section p, ul, li, a {
+  font-size: medium !important;
+}

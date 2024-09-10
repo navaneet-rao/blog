@@ -2,6 +2,8 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
+// npx ts-node src/addAdmin.ts 
+
 async function updateUserToAdmin(userId: string) {
   try {
     // Create or ensure the Admin record exists
@@ -25,4 +27,4 @@ async function updateUserToAdmin(userId: string) {
   }
 }
 
-updateUserToAdmin('3');
+updateUserToAdmin('cm0wm8st3000061u1d422cd4i');
