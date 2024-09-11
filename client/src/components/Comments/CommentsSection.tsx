@@ -120,13 +120,13 @@ const CommentsSection: React.FC<CommentsSectionProps> = ({ postId }) => {
   };
 
   return (
-    <div className="mt-8 text-text-1">
-      <h3 className="text-2xl font-semibold">Comments Section</h3>
-      <form onSubmit={handleCommentSubmit} className="mt-4">
+    <div className="mt-8">
+      <h3 className="text-2xl font-semibold text-text-1">Comments Section</h3>
+      <form onSubmit={handleCommentSubmit} className="mt-4 text-text-1">
         <textarea
           value={comment}
           onChange={(e) => setComment(e.target.value)}
-          className="w-full rounded border p-2"
+          className="w-full rounded p-2 text-black"
           placeholder="Add your comment here..."
           rows={5}
         />
@@ -150,7 +150,7 @@ const CommentsSection: React.FC<CommentsSectionProps> = ({ postId }) => {
           comments.map((comment) => (
             <div key={comment.id} className="mt-4 border-t pt-4">
               <p className="text-lg">{comment.content}</p>
-              <p className="text-sm  text-gray-500">
+              <p className="text-sm text-gray-500">
                 By {comment.author?.name || "Unknown"} |{" "}
                 {new Date(comment.createdAt).toLocaleDateString()}
               </p>

@@ -81,7 +81,7 @@ const PostView = () => {
                 <p>No post found</p>
               )}
             </div>
-            <div className="mt-10 border-t border-text-1">
+            <div className="mt-10 border-t text-text-1 pb-10 border-text-1">
               <CommentsSection postId={postId!} />
             </div>
           </main>
