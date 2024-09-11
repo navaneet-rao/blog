@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-
 import Layout from "../../../layouts/layout";
 import DOMPurify from "dompurify"; // For sanitizing HTML content
 import Loading from "../../Loading/Loading";
 import { Link } from "react-router-dom";
+
+import "../ViewPost/ViewPost.css";
 
 interface Post {
   id: string;
@@ -26,7 +27,7 @@ const NewFeed = () => {
     const fetchPosts = async () => {
       setError(null);
       try {
-        const response = await fetch("http://localhost:5000/api/allposts");
+        const response = await fetch("http://192.168.29.252:5000/api/allposts");
         const data = await response.json();
 
         console.log(data.posts);
@@ -54,8 +55,8 @@ const NewFeed = () => {
 
   return (
     <Layout>
-      <div className="h-full bg-background-2 pt-28">
-        <main className="container mx-auto min-h-screen">
+      <div className="h-full bg-background-2 pt-28 pb-10">
+        <main className="container mx-auto min-h-screen ">
           <h1 className="mb-8 text-center text-3xl font-bold text-text-1">
             Latest Posts
           </h1>
@@ -63,11 +64,11 @@ const NewFeed = () => {
           {posts.length === 0 ? (
             <p className="text-center text-lg">No posts available</p>
           ) : (
-            <div className="grid gap-6 md:grid-cols-2">
+            <div className="flex flex-wrap justify-center gap-6 px-2">
               {posts.map((post) => (
                 <div
                   key={post.id}
-                  className="flex flex-col rounded border border-gray-200 bg-white p-4 shadow-md"
+                  className="flex w-full flex-col rounded bg-background-1 p-2 shadow-md sm:w-[90%] sm:p-4 md:w-[48%] lg:w-[32%]"
                 >
                   {/* Author Name and Category */}
                   <div className="mb-4 flex items-center text-sm text-gray-500">
@@ -77,20 +78,20 @@ const NewFeed = () => {
                   </div>
 
                   {/* Post Title */}
-                  <h2 className="mb-2 text-xl font-semibold text-gray-800">
+                  <h2 className="mb-4 text-lg font-bold text-text-1">
                     {post.title}
                   </h2>
 
                   {/* Render HTML content safely */}
                   <div
-                    className="mb-4 line-clamp-3 text-gray-700"
+                    className="ViewPost-contant-section line-clamp-3 mt-auto text-text-1"
                     dangerouslySetInnerHTML={{
                       __html: DOMPurify.sanitize(post.content),
                     }}
                   />
 
                   {/* Footer with Comments Count, Date, and Read More button */}
-                  <div className="flex items-center justify-between text-sm text-gray-500">
+                  <div className="mt-auto flex items-center justify-between text-sm text-gray-500">
                     <div className="flex items-center">
                       <span className="mr-2">
                         <svg
@@ -119,7 +120,7 @@ const NewFeed = () => {
                     <Link
                       to={`/post/${post.id}`}
                       target="_blank"
-                      className="text-indigo-600 hover:text-indigo-800 hover:underline"
+                      className="text-blue-400 hover:text-indigo-400 hover:underline"
                     >
                       Read More
                     </Link>

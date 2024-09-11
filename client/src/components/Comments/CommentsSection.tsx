@@ -26,7 +26,7 @@ const CommentsSection: React.FC<CommentsSectionProps> = ({ postId }) => {
     const fetchComments = async () => {
       try {
         const response = await fetch(
-          `http://localhost:5000/api/posts/${postId}/comments`,
+          `http://192.168.29.252:5000/api/posts/${postId}/comments`,
         );
         const data = await response.json();
 
@@ -58,7 +58,7 @@ const CommentsSection: React.FC<CommentsSectionProps> = ({ postId }) => {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/posts/${postId}/comments`,
+        `http://192.168.29.252:5000/api/posts/${postId}/comments`,
         {
           method: "POST",
           headers: {
@@ -92,7 +92,7 @@ const CommentsSection: React.FC<CommentsSectionProps> = ({ postId }) => {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/posts/${postId}/comments/${commentId}`,
+        `http://192.168.29.252:5000/api/posts/${postId}/comments/${commentId}`,
         {
           method: "DELETE",
           headers: {

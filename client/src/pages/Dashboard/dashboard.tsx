@@ -46,7 +46,7 @@ const Dashboard = () => {
         try {
           // Fetch user posts
           const postsResponse = await fetch(
-            `http://localhost:5000/api/users/${user.id}/posts`,
+            `http://192.168.29.252:5000/api/users/${user.id}/posts`,
           );
           if (!postsResponse.ok) throw new Error("Failed to fetch posts");
           const postsData = await postsResponse.json();
@@ -55,7 +55,7 @@ const Dashboard = () => {
 
           // Fetch user comments
           const commentsResponse = await fetch(
-            `http://localhost:5000/api/users/${user.id}/comments`,
+            `http://192.168.29.252:5000/api/users/${user.id}/comments`,
           );
           if (!commentsResponse.ok) throw new Error("Failed to fetch comments");
           const commentsData = await commentsResponse.json();
@@ -75,13 +75,13 @@ const Dashboard = () => {
   }, [user]);
 
   const handleOpenStudio = () => {
-    window.open("http://localhost:5555", "_blank");
+    window.open("http://192.168.29.252:5555", "_blank");
   };
 
   const handleDeletePost = async (postId: string) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/posts/${postId}`,
+        `http://192.168.29.252:5000/api/posts/${postId}`,
         {
           method: "DELETE",
         },

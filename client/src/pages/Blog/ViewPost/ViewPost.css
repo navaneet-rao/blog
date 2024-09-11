@@ -2,6 +2,9 @@
   background: transparent !important;
   color: rgba(var(--color-text-1)) !important;
   /* font-size: large !important; */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
 }
 
 .ViewPost-contant-section p, ul, li, a {

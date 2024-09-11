@@ -22,7 +22,7 @@ const SignUp = () => {
     setError("");
 
     try {
-      const response = await fetch("http://localhost:5000/api/signup", {
+      const response = await fetch("http://192.168.29.252:5000/api/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -27,7 +27,7 @@ const PostView = () => {
     const fetchPost = async () => {
       try {
         const response = await fetch(
-          `http://localhost:5000/api/posts/${postId}`,
+          `http://192.168.29.252:5000/api/posts/${postId}`,
         );
         const data = await response.json();
 
@@ -57,7 +57,7 @@ const PostView = () => {
 
   return (
     <Layout>
-      <div className="h-full bg-background-2 pt-28">
+      <div className="h-full bg-background-2 w-full pt-28">
         <div className="min-h-screen">
           <main className="container mx-auto rounded px-5">
             <div>
