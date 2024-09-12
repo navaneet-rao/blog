@@ -1,5 +1,5 @@
 //
-// NewFeed.tsx 
+// NewFeed.tsx
 // This file contains the NewFeed page component.
 // It fetches the latest posts from the server and displays them in a list.
 // It uses the DOMPurify library to sanitize HTML content before rendering it.
@@ -35,7 +35,7 @@ const NewFeed = () => {
     const fetchPosts = async () => {
       setError(null);
       try {
-        const response = await fetch("http://0.0.0.0:5000/api/allposts");
+        const response = await fetch("https://api.navaneet.tech/api/allposts");
         const data = await response.json();
 
         console.log(data.posts);
@@ -63,8 +63,8 @@ const NewFeed = () => {
 
   return (
     <Layout>
-      <div className="h-full bg-background-2 pt-28 pb-10">
-        <main className="container mx-auto min-h-screen ">
+      <div className="h-full bg-background-2 pb-10 pt-28">
+        <main className="container mx-auto min-h-screen">
           <h1 className="mb-8 text-center text-3xl font-bold text-text-1">
             Latest Posts
           </h1>
@@ -92,7 +92,7 @@ const NewFeed = () => {
 
                   {/* Render HTML content safely */}
                   <div
-                    className="ViewPost-contant-section line-clamp-3 mt-auto text-text-1"
+                    className="ViewPost-contant-section mt-auto line-clamp-3 text-text-1"
                     dangerouslySetInnerHTML={{
                       __html: DOMPurify.sanitize(post.content),
                     }}
