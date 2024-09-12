@@ -21,13 +21,7 @@ const app = express();
 // const prisma = new PrismaClient();
 
 // Middleware
-// Set up CORS to allow requests from http://localhost:5173
-app.use(cors({
-  origin: 'http://localhost:5173',  // Allow your frontend origin
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allow specific methods (optional)
-  allowedHeaders: ['Content-Type', 'Authorization']  // Allow specific headers (optional)
-}));
-
+app.use(cors());
 
 // Increase the payload size limit (set appropriate size limit, e.g., 10MB)
 app.use(bodyParser.json({ limit: "10mb" }));
