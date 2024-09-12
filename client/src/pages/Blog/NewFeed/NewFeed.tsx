@@ -53,7 +53,6 @@ const NewFeed = () => {
         setLoading(false);
       }
     };
-
     fetchPosts();
   }, []);
 
