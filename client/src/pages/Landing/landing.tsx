@@ -1,3 +1,11 @@
+// 
+// Landing.tsx
+// This file contains the Landing page component.
+// It is the home page of the application and provides an overview of the platform.
+// The Landing component is accessible to all users.
+//
+
+
 import { Link } from "react-router-dom";
 import Layout from "../../layouts/layout";
 
@@ -68,62 +76,7 @@ function Landing() {
           </div>
         </section>
 
-        {/* Recent Posts Section */}
-        <section className="bg-white py-16">
-          <div className="container mx-auto text-center">
-            <h2 className="mb-12 text-4xl font-bold text-indigo-600">
-              Recent Posts
-            </h2>
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {/* Example Post Cards */}
-              <div className="rounded-lg bg-gray-100 p-6 shadow-md">
-                <h3 className="mb-4 text-2xl font-semibold">
-                  Exploring JavaScript ES2024
-                </h3>
-                <p>
-                  Dive into the latest features of JavaScript in ES2024 and how
-                  it can change the way you code.
-                </p>
-                <a
-                  href="/post/1"
-                  className="mt-4 inline-block font-semibold text-indigo-500 hover:underline"
-                >
-                  Read More
-                </a>
-              </div>
-              <div className="rounded-lg bg-gray-100 p-6 shadow-md">
-                <h3 className="mb-4 text-2xl font-semibold">
-                  CSS Grid vs. Flexbox
-                </h3>
-                <p>
-                  Learn the differences between CSS Grid and Flexbox and when to
-                  use each layout system.
-                </p>
-                <a
-                  href="/post/2"
-                  className="mt-4 inline-block font-semibold text-indigo-500 hover:underline"
-                >
-                  Read More
-                </a>
-              </div>
-              <div className="rounded-lg bg-gray-100 p-6 shadow-md">
-                <h3 className="mb-4 text-2xl font-semibold">
-                  Understanding TypeScript Generics
-                </h3>
-                <p>
-                  A comprehensive guide to mastering generics in TypeScript for
-                  more flexible and reusable code.
-                </p>
-                <a
-                  href="/post/3"
-                  className="mt-4 inline-block font-semibold text-indigo-500 hover:underline"
-                >
-                  Read More
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
+
 
         
 

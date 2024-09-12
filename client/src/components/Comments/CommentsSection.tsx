@@ -1,3 +1,14 @@
+//
+// CommentsSection.tsx 
+//
+// This component is responsible for displaying the comments section of a post. 
+// It allows users to add new comments and delete their own comments. 
+// It fetches the comments for a post from the server and displays them in a list. 
+// It also displays any errors or success messages that occur while adding or deleting comments.
+// The component uses the UserContext to access the current user and token,
+//
+
+
 import React, { useState, useEffect, useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 
@@ -26,7 +37,7 @@ const CommentsSection: React.FC<CommentsSectionProps> = ({ postId }) => {
     const fetchComments = async () => {
       try {
         const response = await fetch(
-          `http://192.168.29.252:5000/api/posts/${postId}/comments`,
+          `http://0.0.0.0:5000/api/posts/${postId}/comments`,
         );
         const data = await response.json();
 
@@ -58,7 +69,7 @@ const CommentsSection: React.FC<CommentsSectionProps> = ({ postId }) => {
 
     try {
       const response = await fetch(
-        `http://192.168.29.252:5000/api/posts/${postId}/comments`,
+        `http://0.0.0.0:5000/api/posts/${postId}/comments`,
         {
           method: "POST",
           headers: {
@@ -92,7 +103,7 @@ const CommentsSection: React.FC<CommentsSectionProps> = ({ postId }) => {
 
     try {
       const response = await fetch(
-        `http://192.168.29.252:5000/api/posts/${postId}/comments/${commentId}`,
+        `http://0.0.0.0:5000/api/posts/${postId}/comments/${commentId}`,
         {
           method: "DELETE",
           headers: {

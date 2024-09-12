@@ -1,3 +1,10 @@
+//
+// Description: This file contains the script to create categories in the database.
+// It uses the Prisma client to interact with the database and creates multiple categories with predefined names.
+// To run this script, use the following command:
+// npx ts-node src/categories.ts
+//
+
 import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();

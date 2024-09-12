@@ -1,3 +1,10 @@
+//
+// src/api/post.js
+// This file contains the route to create a new post. It requires the title, content, category, and author ID to create a new post in the database.
+// POST /api/posts - Create a new post
+// Uses Prisma Client to interact with the database
+//
+
 const express = require("express");
 const router = express.Router();
 const { PrismaClient } = require("@prisma/client");

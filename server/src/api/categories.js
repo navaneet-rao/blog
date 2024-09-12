@@ -1,5 +1,9 @@
+//
 // src/api/categories.js
-
+// API route for fetching all categories
+// GET /api/categories - Fetch all categories
+// Uses Prisma Client to interact with the database
+//
 const express = require("express");
 const router = express.Router();
 const { PrismaClient } = require("@prisma/client");

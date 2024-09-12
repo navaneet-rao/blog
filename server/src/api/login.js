@@ -1,3 +1,14 @@
+//
+// src/api/login.js
+// This file contains the login route. It checks the email and password
+// provided by the user and returns a JWT token if the credentials are valid.
+// The token is signed using a secret key and includes the user's ID and admin status.
+// The token is valid for 1 hour.
+// POST /api/login - Login route to authenticate users
+// Uses Prisma Client to interact with the database
+//
+
+
 const express = require("express");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");

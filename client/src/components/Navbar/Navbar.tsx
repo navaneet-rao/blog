@@ -1,3 +1,11 @@
+//
+// Navbar.tsx 
+// This component displays a navigation bar with links to the blog, dashboard, and login pages.
+// It also contains a toggle switch to change the theme of the application.
+// The theme is stored in the local storage and applied to the body of the document.
+// The component uses the UserContext to access the current user. To see if a user is logged in. and display a welcome message.
+// 
+
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../../contexts/UserContext";

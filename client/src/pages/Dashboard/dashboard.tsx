@@ -1,3 +1,12 @@
+//
+// dashboard.tsx 
+// This file contains the Dashboard page component.
+// It fetches the user's posts and comments from the server and displays them.
+// It also provides links to create new posts and open Prisma Studio only for admin users.
+// The Dashboard component is accessible only to authenticated users.
+//
+
+
 import { useContext, useState, useEffect, Suspense } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import Layout from "../../layouts/layout";
@@ -46,7 +55,7 @@ const Dashboard = () => {
         try {
           // Fetch user posts
           const postsResponse = await fetch(
-            `http://192.168.29.252:5000/api/users/${user.id}/posts`,
+            `http://0.0.0.0:5000/api/users/${user.id}/posts`,
           );
           if (!postsResponse.ok) throw new Error("Failed to fetch posts");
           const postsData = await postsResponse.json();
@@ -55,7 +64,7 @@ const Dashboard = () => {
 
           // Fetch user comments
           const commentsResponse = await fetch(
-            `http://192.168.29.252:5000/api/users/${user.id}/comments`,
+            `http://0.0.0.0:5000/api/users/${user.id}/comments`,
           );
           if (!commentsResponse.ok) throw new Error("Failed to fetch comments");
           const commentsData = await commentsResponse.json();
@@ -75,13 +84,13 @@ const Dashboard = () => {
   }, [user]);
 
   const handleOpenStudio = () => {
-    window.open("http://192.168.29.252:5555", "_blank");
+    window.open("http://0.0.0.0:5555", "_blank");
   };
 
   const handleDeletePost = async (postId: string) => {
     try {
       const response = await fetch(
-        `http://192.168.29.252:5000/api/posts/${postId}`,
+        `http://0.0.0.0:5000/api/posts/${postId}`,
         {
           method: "DELETE",
         },

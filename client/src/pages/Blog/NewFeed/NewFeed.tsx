@@ -1,3 +1,11 @@
+//
+// NewFeed.tsx 
+// This file contains the NewFeed page component.
+// It fetches the latest posts from the server and displays them in a list.
+// It uses the DOMPurify library to sanitize HTML content before rendering it.
+// The NewFeed component is accessible to all users.
+//
+
 import { useEffect, useState } from "react";
 import Layout from "../../../layouts/layout";
 import DOMPurify from "dompurify"; // For sanitizing HTML content
@@ -27,7 +35,7 @@ const NewFeed = () => {
     const fetchPosts = async () => {
       setError(null);
       try {
-        const response = await fetch("http://192.168.29.252:5000/api/allposts");
+        const response = await fetch("http://0.0.0.0:5000/api/allposts");
         const data = await response.json();
 
         console.log(data.posts);

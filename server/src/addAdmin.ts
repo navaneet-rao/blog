@@ -1,3 +1,10 @@
+//
+// This script adds an admin role to a user by creating an Admin record and linking it to the User record.
+// It uses the Prisma client to interact with the database.
+// To run this script, use the following command:
+// npx ts-node src/addAdmin.ts
+//
+
 import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();

@@ -1,4 +1,12 @@
+// 
 // src/api/userRoutes.js
+// API routes for fetching posts and comments by user ID and deleting a post by ID
+// 1. GET /api/users/:userId/posts - Fetch all posts by user ID
+// 2. GET /api/users/:userId/comments - Fetch all comments by user ID
+// 3. DELETE /api/posts/:postId - Delete a post by ID
+// Uses Prisma Client to interact with the database
+//
+
 const express = require("express");
 const { PrismaClient } = require("@prisma/client");
 

@@ -1,3 +1,13 @@
+//
+// UserContext.tsx 
+// 
+// This context provides the current user and token to the application.
+// It includes functions to log in and log out a user.
+// The user and token are stored in the local storage to persist across page reloads.
+// The context is used by components to access the current user and token.
+//
+
+
 import  { createContext, useState, useEffect, ReactNode } from "react";
 import { useNavigate } from "react-router-dom";
 

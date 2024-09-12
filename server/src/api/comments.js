@@ -1,3 +1,11 @@
+//
+// /src/api/comments.js
+// 1. GET /api/posts/:postId/comments - Fetch comments for a specific post
+// 2. POST /api/posts/:postId/comments - Add a comment to a specific post
+// 3. DELETE /api/posts/:postId/comments/:commentId - Delete a comment
+// Uses Prisma Client to interact with the database
+//
+
 const express = require("express");
 const { PrismaClient } = require("@prisma/client");
 

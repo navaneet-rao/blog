@@ -1,3 +1,11 @@
+//
+// ViewPost.tsx 
+// This file contains the ViewPost page component.
+// It fetches a single post from the server and displays it.
+// It also displays the comments section for the post.
+// The ViewPost component is accessible to all users.
+// 
+
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Layout from "../../../layouts/layout";
@@ -27,7 +35,7 @@ const PostView = () => {
     const fetchPost = async () => {
       try {
         const response = await fetch(
-          `http://192.168.29.252:5000/api/posts/${postId}`,
+          `http://0.0.0.0:5000/api/posts/${postId}`,
         );
         const data = await response.json();
 

@@ -1,3 +1,12 @@
+//
+// App.tsx 
+// This file contains the main App component.
+// It sets up the routing for the application using React Router.
+// It uses the Suspense component to handle lazy loading of components.
+// It wraps the application in the UserProvider context provider.
+// It also contains the PrivateRoute component to protect routes that require authentication.
+//
+
 import { Suspense, lazy } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { UserProvider } from "./contexts/UserContext";
@@ -10,12 +19,12 @@ const Login = lazy(() => import("./pages/LogIn/logIn"));
 const Landing = lazy(() => import("./pages/Landing/landing"));
 const NewFeed = lazy(() => import("./pages/Blog/NewFeed/NewFeed"));
 const PostView = lazy(() => import("./pages/Blog/ViewPost/ViewPost"));
-const AddPost = lazy(() => import("./pages/Blog/CreateBlog/CreateBlog"));  
+const AddPost = lazy(() => import("./pages/Blog/CreateBlog/CreateBlog"));
 const PrivateRoute = lazy(() => import("./components/PrivateRoute"));
 
 function App() {
   return (
-    <Router basename="/blog">
+    <Router>
       <UserProvider>
         <Suspense fallback={<Loading />}>
           <Routes>

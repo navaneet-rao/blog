@@ -1,3 +1,11 @@
+//
+// SignUP.tsx 
+// contains the sign up form for new users to create an account.
+// It sends a POST request to the server to create a new user.
+// It also contains a link to the login page.
+// The SignUp component is accessible to all users.
+//
+
 import Layout from "../../layouts/layout";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";

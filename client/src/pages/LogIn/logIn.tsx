@@ -1,3 +1,12 @@
+//
+// login.tsx
+// This file contains the Login page component.
+// It allows users to log in to the application.
+// It displays a form with email and password fields.
+// It also contains a link to the registration page.
+// The Login component is accessible to all users.
+//
+
 import Layout from "../../layouts/layout";
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -10,7 +19,8 @@ const Login = () => {
 
   const navigate = useNavigate();
   const { login } = useContext(UserContext);
-
+   
+  // Handle form submission, send a POST request to the server
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -30,10 +40,11 @@ const Login = () => {
       } else {
         throw new Error(data.error || "Something went wrong");
       }
-
-      console.log(data.message);
-      console.log("User:", data.user);
-      console.log("Token:", data.token);
+      
+      // Just to verify the response
+      // console.log(data.message);
+      // console.log("User:", data.user);
+      // console.log("Token:", data.token);
 
       navigate("/dashboard");
     } catch (err) {

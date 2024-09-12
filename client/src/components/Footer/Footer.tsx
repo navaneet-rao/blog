@@ -1,6 +1,11 @@
+//
+// Footer.tsx
+// Is is a simple footer component that displays a link to my GitHub account.
+//
+
 function Footer() {
   return (
-    <footer className="bg-background-1 py-6  text-text-1">
+    <footer className="bg-background-1 py-6 text-text-1">
       <div className="container mx-auto text-center">
         <p className="mb-4 text-sm">
           &copy; {new Date().getFullYear()} Your Website Name. All rights

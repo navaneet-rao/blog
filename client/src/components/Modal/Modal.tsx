@@ -1,4 +1,17 @@
+//
 // src/components/Modal/Modal.tsx
+// This component displays a modal dialog with a message and a close button.
+// It is used to show success or error messages to the user.
+// The modal is displayed on top of the main content and blocks interaction with it.
+// 
+// The component takes the following props:
+// - isOpen: A boolean value indicating whether the modal is open.
+// - onClose: A function to close the modal.
+// - message: The message to display in the modal.
+// - isSuccess: A boolean value indicating whether the message is a success message.
+//
+
+
 import React from "react";
 
 interface ModalProps {

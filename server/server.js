@@ -1,3 +1,17 @@
+//
+// server.js 
+// is the entry point of the server application.
+// It sets up the Express server, middleware, and API routes.
+// The server listens on a specified port and logs a message when it starts.
+// The server is configured to accept requests from any origin using CORS.
+// The server uses the PrismaClient to interact with the database.
+// The server uses the body-parser middleware to parse incoming requests.
+// The server uses the express.json() middleware to parse JSON payloads.
+// The server uses the express.urlencoded() middleware to parse URL-encoded payloads.
+// The server uses the /api/admin, /api/signup, /api/login, /api/categories, /api/posts, /api/allposts, /api/comments, and /api/user routes.
+// 
+
+
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");

@@ -1,4 +1,11 @@
+//
 // src/api/posts.js
+// API routes for fetching all posts and a single post by ID
+// 1. GET /api/allposts - Fetch all posts with authors, categories, and comments count
+// 2. GET /api/posts/:postId - Fetch a single post by ID with author and comments
+// Uses Prisma Client to interact with the database
+//
+
 const express = require("express");
 const { PrismaClient } = require("@prisma/client");
 

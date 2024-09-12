@@ -1,3 +1,11 @@
+//
+// Layout.tsx 
+// contains the layout of the application, including the Navbar and Footer components.
+// It also sets the theme based on the user's preference stored in local storage.
+// The layout component wraps around the main content of the application.
+//
+
+
 import Footer from "../components/Footer/Footer";
 import Navbar from "../components/Navbar/Navbar"; // Adjust the path as needed
 import { ReactNode, useEffect } from "react";

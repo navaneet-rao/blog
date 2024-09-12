@@ -1,4 +1,9 @@
+// 
 // src/api/signup.js
+// API route for user signup
+// POST /api/signup - Create a new user
+// Uses Prisma Client to interact with the database
+//
 const express = require("express");
 const bcrypt = require("bcryptjs");
 const { PrismaClient } = require("@prisma/client");

@@ -1,3 +1,10 @@
+//
+// Loading.tsx 
+// This file contains the Loading component.
+// It displays a loading spinner and a message.
+// It is used to indicate that the page is still loading.
+//
+
 import React from "react";
 
 const Loading: React.FC = () => {

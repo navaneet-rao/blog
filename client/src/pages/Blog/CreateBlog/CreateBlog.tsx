@@ -1,3 +1,10 @@
+// 
+// CreateBlog.tsx 
+// This file contains the CreateBlog page component.
+// It imports the AddPost component and wraps it in the Layout component.
+// The CreateBlog component is used to create a new blog post.
+// It is accessible only to authenticated users.
+// 
 
 import { lazy } from "react";
 import Layout from "../../../layouts/layout";

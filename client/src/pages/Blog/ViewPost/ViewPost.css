@@ -1,3 +1,12 @@
+/* 
+  File: ViewPost.css
+  
+  This file is used to style the ViewPost component.
+  The ViewPost component is used to display a single post.
+  The ViewPost component is used in the Blog page.
+
+*/
+
 .ViewPost-contant-section * {
   background: transparent !important;
   color: rgba(var(--color-text-1)) !important;
