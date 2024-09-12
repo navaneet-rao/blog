@@ -48,9 +48,7 @@ const NewFeed = () => {
           setError(data.error || "Error fetching posts");
         }
       } catch (err) {
-        const error = err as Error;
-        console.error("Error:", error.message);
-        setError(error.message);
+        console.log(err);
       } finally {
         setLoading(false);
       }
