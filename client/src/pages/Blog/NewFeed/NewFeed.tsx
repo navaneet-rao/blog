@@ -35,9 +35,7 @@ const NewFeed = () => {
     const fetchPosts = async () => {
       setError(null);
       try {
-        const response = await fetch("https://api.navaneet.tech/api/allposts", {
-          mode: "no-cors",
-        });
+        const response = await fetch("https://api.navaneet.tech/api/allposts");
         const data = await response.json();
 
         console.log(data.posts);
@@ -53,6 +51,7 @@ const NewFeed = () => {
         setLoading(false);
       }
     };
+
     fetchPosts();
   }, []);
 
